@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos提案 | 株式会社トークパス様 コーポレートサイト改修</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-deep:#101B31;
+    --onair:#E8483C;
+    --cream:#F6F2E9;
+    --sand:#D9C9A8;
+    --ink:#2A2A2A;
+    --steel:#8B9AAE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.85;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Kaisei Tokumin', serif;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{padding:100px 0;position:relative;}
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    background:
+      radial-gradient(circle at 85% 15%, rgba(232,72,60,0.18), transparent 40%),
+      linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, #223458 100%);
+    color:var(--cream);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 0 80px;
+  }
+  .hero .wrap{
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+    position:relative;
+    z-index:2;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    align-self:flex-start;
+    border:1px solid rgba(245,241,232,0.4);
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--sand);
+  }
+  .badge .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--onair);
+    box-shadow:0 0 12px 3px rgba(232,72,60,0.7);
+    animation:blink 1.6s infinite;
+  }
+  @keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
+  .hero h1{
+    font-size:clamp(32px, 5vw, 58px);
+    font-weight:700;
+    line-height:1.5;
+    letter-spacing:0.02em;
+  }
+  .hero h1 span{
+    display:block;
+    color:var(--onair);
+  }
+  .hero p.lead{
+    max-width:560px;
+    font-size:16px;
+    color:#E6E1D3;
+    font-weight:300;
+  }
+  .hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .waveform{
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+    height:70px;
+  }
+  .waveform span{
+    width:5px;
+    border-radius:3px;
+    background:linear-gradient(to top, var(--onair), var(--sand));
+    animation:wave 1.4s ease-in-out infinite;
+  }
+  @keyframes wave{
+    0%,100%{transform:scaleY(0.3);}
+    50%{transform:scaleY(1);}
+  }
+  .waveform span:nth-child(1){height:20px;animation-delay:0s;}
+  .waveform span:nth-child(2){height:45px;animation-delay:0.1s;}
+  .waveform span:nth-child(3){height:65px;animation-delay:0.2s;}
+  .waveform span:nth-child(4){height:35px;animation-delay:0.3s;}
+  .waveform span:nth-child(5){height:55px;animation-delay:0.4s;}
+  .waveform span:nth-child(6){height:25px;animation-delay:0.5s;}
+  .waveform span:nth-child(7){height:60px;animation-delay:0.15s;}
+  .waveform span:nth-child(8){height:40px;animation-delay:0.35s;}
+  .waveform span:nth-child(9){height:20px;animation-delay:0.25s;}
+  .waveform span:nth-child(10){height:50px;animation-delay:0.05s;}
+
+  .from-line{
+    font-size:13px;
+    color:var(--steel);
+    letter-spacing:0.05em;
+  }
+  .from-line strong{
+    color:var(--cream);
+    font-weight:500;
+  }
+
+  /* ===== 共通見出し ===== */
+  .section-head{
+    margin-bottom:56px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .section-tag{
+    font-size:12px;
+    letter-spacing:0.25em;
+    color:var(--onair);
+    font-weight:700;
+  }
+  .section-head h2{
+    font-size:clamp(24px,3.4vw,36px);
+    color:var(--navy);
+    font-weight:700;
+  }
+  .section-head p{
+    color:#5b5b5b;
+    max-width:620px;
+    font-size:15px;
+  }
+
+  /* ===== 理解セクション ===== */
+  .understand{
+    background:var(--cream);
+  }
+  .understand-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  .understand-text p{
+    margin-bottom:20px;
+    font-size:15.5px;
+  }
+  .site-card{
+    background:var(--navy);
+    color:var(--cream);
+    padding:36px;
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+  }
+  .site-card::before{
+    content:"";
+    position:absolute;
+    top:-40px;right:-40px;
+    width:140px;height:140px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(232,72,60,0.35), transparent 70%);
+  }
+  .site-card .url{
+    font-size:12px;
+    color:var(--sand);
+    letter-spacing:0.05em;
+    margin-bottom:18px;
+    word-break:break-all;
+  }
+  .site-card ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .site-card li{
+    font-size:14px;
+    padding-left:20px;
+    position:relative;
+  }
+  .site-card li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--onair);
+  }
+  .site-card .note{
+    margin-top:22px;
+    font-size:12px;
+    color:var(--steel);
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:16px;
+  }
+
+  /* ===== 価値カード ===== */
+  .value{
+    background:linear-gradient(180deg, var(--sand) 0%, var(--cream) 18%);
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .value-card{
+    background:#fff;
+    border:1px solid #e3dccb;
+    padding:34px 28px;
+    border-radius:6px;
+    position:relative;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .value-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 30px -12px rgba(27,42,74,0.25);
+  }
+  .value-num{
+    font-family:'Kaisei Tokumin',serif;
+    font-size:13px;
+    color:var(--onair);
+    letter-spacing:0.15em;
+    margin-bottom:14px;
+    display:block;
+  }
+  .value-card h3{
+    font-size:18px;
+    color:var(--navy);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .value-card p{
+    font-size:13.8px;
+    color:#5b5b5b;
+  }
+  .value-card.wide{
+    grid-column:span 1;
+  }
+
+  /* ===== スケジュール ===== */
+  .flow{
+    background:var(--navy-deep);
+    color:var(--cream);
+  }
+  .flow .section-head p{color:#c7cad6;}
+  .flow .section-head h2{color:var(--cream);}
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    position:relative;
+    padding-left:36px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:9px;top:6px;bottom:6px;
+    width:2px;
+    background:linear-gradient(to bottom, var(--onair), var(--steel));
+  }
+  .t-item{
+    position:relative;
+    padding:0 0 44px 30px;
+  }
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";
+    position:absolute;
+    left:-36px;top:2px;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--navy-deep);
+    border:3px solid var(--onair);
+  }
+  .t-item .t-day{
+    font-size:12px;
+    color:var(--sand);
+    letter-spacing:0.1em;
+    margin-bottom:6px;
+  }
+  .t-item h3{
+    font-size:17px;
+    margin-bottom:8px;
+    font-weight:500;
+    color:#fff;
+  }
+  .t-item p{
+    font-size:13.8px;
+    color:#c7cad6;
+    max-width:560px;
+  }
+
+  /* ===== クロージング ===== */
+  .closing{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(232,72,60,0.12), transparent 45%),
+      var(--cream);
+    text-align:center;
+  }
+  .closing h2{
+    font-size:clamp(26px,4vw,40px);
+    color:var(--navy);
+    margin-bottom:20px;
+  }
+  .closing p{
+    max-width:520px;
+    margin:0 auto 40px;
+    color:#5b5b5b;
+    font-size:15px;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--onair);
+    color:#fff;
+    padding:18px 46px;
+    border-radius:999px;
+    font-size:15px;
+    letter-spacing:0.08em;
+    font-weight:700;
+    box-shadow:0 14px 26px -10px rgba(232,72,60,0.55);
+    transition:transform 0.2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-3px);}
+  .closing-foot{
+    margin-top:56px;
+    font-size:12px;
+    color:var(--steel);
+    letter-spacing:0.06em;
+  }
+  .closing-foot strong{color:var(--navy);}
+
+  footer{
+    background:var(--navy-deep);
+    color:var(--steel);
+    text-align:center;
+    padding:30px 0;
+    font-size:12px;
+    letter-spacing:0.06em;
+  }
+
+  @media (max-width:860px){
+    .understand-grid{grid-template-columns:1fr;gap:36px;}
+    .value-grid{grid-template-columns:repeat(2,1fr);}
+    .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px;}
+    .waveform{height:50px;}
+  }
+  @media (max-width:600px){
+    section{padding:70px 0;}
+    .value-grid{grid-template-columns:1fr;}
+    .hero{padding-top:100px;}
+    .waveform span{width:4px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> KAIROS FROM 提案書 / PROPOSAL</div>
+    <h1>言葉を届けるプロの舞台を、<span>もっと「伝わる」設計へ。</span></h1>
+    <p class="lead">
+      新潟の総合プロモーション会社として、映像・イベント・広報の最前線に立つ株式会社トークパス様。
+      その「発信力」を、コーポレートサイトの隅々にまで行き渡らせるための改修を、
+      Web制作・システム開発チーム Kairos がご提案いたします。
+    </p>
+    <div class="hero-bottom">
+      <div class="waveform">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="from-line">
+        <strong>Kairos</strong> — STUDIO実績を持つ制作チームより<br>
+        大島巧様（アナウンサー / 株式会社トークパス）宛のご提案です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="understand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">UNDERSTANDING</span>
+      <h2>貴社サイトを拝見し、理解したこと</h2>
+      <p>talkpass.jp を拝見しました。「伝える」を専門とする会社だからこそ、サイト自体の伝達力にも妥協は許されないと感じています。</p>
+    </div>
+    <div class="understand-grid">
+      <div class="understand-text">
+        <p>
+          トークパス様は、映像制作・イベント運営・アナウンス業務など、複数のプロモーション領域を横断される総合力が強みの会社と理解しています。
+          サービス内容や実績のページは、その多面的な事業を初見の方にも一目で伝える「顔」であり、情報設計の精度がそのまま信頼につながる部分だと考えます。
+        </p>
+        <p>
+          今回はトップページ・サービス内容・実績・資料の4〜5ページを対象に、構成とデザインの調整、テキスト・画像の差し替え、レスポンシブ確認までを短納期（契約日から2週間）で仕上げるご依頼と理解しております。
+          あわせて、改修後の継続的な保守運用（実績追加・コラム掲載・バナー差し替え等）のご相談があることも承知しており、単発で終わらせず、長くお付き合いできる体制づくりを見据えて臨みます。
+        </p>
+        <p>
+          STUDIOでの編集権限共有、NDA・業務委託契約の締結、着手前オンラインMTGでの範囲確定という進め方にも、そのまま対応可能です。
+        </p>
+      </div>
+      <div class="site-card">
+        <div class="url">https://talkpass.jp/ — 株式会社トークパス（STUDIO制作）</div>
+        <ul>
+          <li>対象：トップ／サービス内容／実績／資料　他1ページの可能性</li>
+          <li>作業：構成・デザイン調整、原稿・写真の差し替え、レスポンシブ調整</li>
+          <li>納期：契約日から2週間・厳守</li>
+          <li>今後：月額保守運用のご相談余地あり</li>
+        </ul>
+        <div class="note">※対象範囲は着手前MTGにて最終確定という前提で承っております。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">WHAT WE OFFER</span>
+      <h2>Kairosがご提供できる価値</h2>
+      <p>「伝える会社」のサイトだからこそ、見た目の調整だけでなく、伝わる導線までを含めて仕上げます。</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <span class="value-num">01</span>
+        <h3>STUDIO実績に基づく即応力</h3>
+        <p>STUDIOでの制作・改修経験を活かし、既存の設計思想を崩さずにスピーディーかつ丁寧に手を入れます。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">02</span>
+        <h3>「伝える力」を活かすデザイン調整</h3>
+        <p>プロモーション会社としての強みが伝わるよう、情報の見せ方・視線誘導・余白設計まで踏み込んで整えます。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">03</span>
+        <h3>全ページ完全レスポンシブ確認</h3>
+        <p>スマホ表示を前提に、崩れ・詰まり・タップしづらいボタンなどを一つひとつ確認・調整します。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">04</span>
+        <h3>契約・NDAにも柔軟に対応</h3>
+        <p>電子契約での業務委託契約書・秘密保持契約書の締結、平日日中のオンラインMTGにも問題なく対応いたします。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">05</span>
+        <h3>継続保守を見据えた伴走体制</h3>
+        <p>今回の改修を「相性を見る場」として捉え、実績追加やコラム掲載など、月額保守にもスムーズに移行できる進め方をご用意します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">FLOW &amp; SCHEDULE</span>
+      <h2>進め方とスケジュールイメージ（2週間）</h2>
+      <p>納期厳守を前提に、着手前の合意形成を丁寧に行い、後戻りの少ない進行を組み立てます。</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-day">DAY 0</div>
+        <h3>ご契約・NDA / 業務委託契約の締結</h3>
+        <p>クラウドワークスにて仮払いのご契約後、電子契約にてNDA・業務委託契約書を締結します。</p>
+      </div>
+      <div class="t-item">
+        <div class="t-day">DAY 1〜2</div>
+        <h3>オンラインMTG（30〜60分）</h3>
+        <p>対象ページ・修正範囲・優先順位を最終確定。STUDIOの編集権限を共有いただきます。</p>
+      </div>
+      <div class="t-item">
+        <div class="t-day">DAY 3〜9</div>
+        <h3>制作・改修作業</h3>
+        <p>構成・デザインの調整、テキスト・画像の差し替え、レスポンシブ調整を実施します。</p>
+      </div>
+      <div class="t-item">
+        <div class="t-day">DAY 10〜12</div>
+        <h3>中間確認・修正対応</h3>
+        <p>実装内容をご確認いただき、フィードバックを反映して仕上げます。</p>
+      </div>
+      <div class="t-item">
+        <div class="t-day">DAY 13〜14</div>
+        <h3>最終確認・納品</h3>
+        <p>最終チェックを経て、契約日から2週間以内に納品いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>まずは、お話しさせてください。</h2>
+    <p>STUDIO実績のご提示、概算お見積もり、継続保守への対応可否も含めて、応募時のご要望にすべて沿ってご返信いたします。</p>
+    <a href="#" class="cta-btn">クラウドワークスでご応募内容を見る</a>
+    <div class="closing-foot">
+      <strong>Kairos</strong>｜Web制作・システム開発チーム　— 伝える現場の「伝わるサイト」づくりをお手伝いします。
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Kairos — 本ページは株式会社トークパス様向けの提案LPとして作成しています。
+</footer>
+
+</body>
+</html>
